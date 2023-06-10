@@ -1,0 +1,40 @@
+# Copy to config.toml and fill in. config.toml is gitignored.
+# Credentials are NOT stored here -- they are read from environment variables.
+
+[reddit]
+subreddit = "your_subreddit"
+poll_interval_seconds = 15
+# How many recent submissions to check for a missing prompt each cycle.
+new_post_limit = 50
+# How many of the bot's own recent comments to re-score each cycle.
+comment_scan_limit = 100
+
+[voting]
+# A prompt comment at or below this score removes the post.
+remove_at_score = -3
+# A prompt comment at or above this score approves it.
+approve_at_score = 7
+# Leave a post alone for this long so the vote has time to settle. Without it
+# a single early downvote can decide the outcome.
+grace_period_minutes = 30
+
+[messages]
+prompt = """
+**Does this post belong here?**
+
+Upvote this comment if it fits the subreddit, downvote it if it does not.
+"""
+
+removed = """
+This post has been removed: the community voted that it did not fit the
+subreddit. If you think that is wrong, message the moderators.
+"""
+
+approved = """
+The community voted that this post fits the subreddit. It has been approved.
+"""
+
+[flair]
+# Optional. A post flair template id applied when a post is vote-removed.
+# Leave empty to skip flairing.
+removed_template_id = ""
